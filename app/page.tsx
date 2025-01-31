@@ -4,6 +4,7 @@ import { Services } from "@/components/services"
 import { WhyUs } from "@/components/why-us"
 import { Technology } from "@/components/technology"
 import { Footer } from "@/components/footer"
+import firebaseApp from "../firebase"
 
 export default function Home() {
   return (
