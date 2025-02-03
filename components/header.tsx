@@ -30,9 +30,9 @@ export function Header() {
           <Image 
             src="/croxton-logo.png"
             alt="CROXTON" 
-            width={300}
+            width={200}
             height={50}
-            className="h-14 w-[280px] md:w-[300px]"
+            className="h-20 w-[200px] md:w-[200px]"
             priority
             onError={(e) => {
               console.error('Error loading image:', e);
