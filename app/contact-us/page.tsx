@@ -11,8 +11,8 @@ export default function ContactUs() {
       
       <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">Business Details</h2>
       <ul className="list-none pl-0 mb-4 space-y-3 text-sm md:text-base">
-        <li><strong>Company Name:</strong> Croxton Technologies Private Limited</li>
-        <li><strong>Address:</strong> Vanasthalipuram, Hyderabad, Telangana, India</li>
+        <li><strong>Company Name:</strong> Croxton Technologies </li>
+        <li><strong>Address:</strong> Plot No 466 Road No 9/3, Opp Avasa Building, Vaidehinagar, Vanastalipuram, Rangareddy, Telangana</li>
         <li><strong>Email:</strong> <a href="mailto:croxtontechnologies@gmail.com" className="text-blue-600 hover:underline">croxtontechnologies@gmail.com</a></li>
         <li><strong>Phone:</strong> <a href="tel:+917672029401" className="text-blue-600 hover:underline">7672029401</a></li>
         <li><strong>Working Hours:</strong> Monday to Saturday, 10:00 AM – 6:00 PM IST</li>

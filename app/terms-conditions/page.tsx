@@ -5,7 +5,7 @@ export default function TermsAndConditions() {
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Terms and Conditions</h1>
       
-      <p className="mb-4 text-sm md:text-base"><strong>Effective Date:</strong> May 4, 2025</p>
+      <p className="mb-4 text-sm md:text-base"><strong>Effective Date:</strong> January 2025</p>
       
       <p className="mb-4 text-sm md:text-base">
         These terms govern your use of the Croxton website and services.

@@ -5,10 +5,10 @@ export default function RefundCancellation() {
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Refund and Cancellation Policy</h1>
       
-      <p className="mb-4 text-sm md:text-base"><strong>Effective Date:</strong> May 4, 2025</p>
+      <p className="mb-4 text-sm md:text-base"><strong>Effective Date:</strong> January 2025</p>
       
       <p className="mb-4 text-sm md:text-base">
-        Croxton Technologies Private Limited ensures transparency in our cancellation and refund procedures.
+        Croxton Technologies ensures transparency in our cancellation and refund procedures.
       </p>
       
       <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">1. Cancellation Policy</h2>

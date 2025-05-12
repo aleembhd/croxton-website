@@ -24,6 +24,11 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/shipping-delivery" className="hover:text-gray-300">
+                • Shipping and Delivery
+              </Link>
+            </li>
+            <li>
               <Link href="/about-us" className="hover:text-gray-300">
                 • About Us
               </Link>

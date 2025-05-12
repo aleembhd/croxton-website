@@ -5,10 +5,10 @@ export default function PrivacyPolicy() {
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Privacy Policy</h1>
       
-      <p className="mb-4 text-sm md:text-base"><strong>Effective Date:</strong> [Insert Date]</p>
+      <p className="mb-4 text-sm md:text-base"><strong>Effective Date:</strong> January 2025</p>
       
       <p className="mb-4 text-sm md:text-base">
-        Croxton Technologies Private Limited ("Croxton", "we", "our", or "us") values your privacy and is committed to protecting the information you share with us. 
+        Croxton Technologies ("Croxton", "we", "our", or "us") values your privacy and is committed to protecting the information you share with us. 
         This Privacy Policy explains how we collect, use, disclose, and protect your information.
       </p>
       

@@ -26,10 +26,10 @@ export default function AboutUs() {
       
       <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">Company Details</h2>
       <ul className="list-none pl-0 mb-4 space-y-2 text-sm md:text-base">
-        <li><strong>Legal Name:</strong> Croxton Technologies Private Limited</li>
+        <li><strong>Legal Name:</strong> Croxton Technologies </li>
         <li><strong>Email:</strong> <a href="mailto:croxtontechnologies@gmail.com" className="text-blue-600 hover:underline">croxtontechnologies@gmail.com</a></li>
         <li><strong>Phone:</strong> <a href="tel:+917672029401" className="text-blue-600 hover:underline">7672029401</a></li>
-        <li><strong>Address:</strong> Vanasthalipuram, Hyderabad, Telangana, India</li>
+        <li><strong>Address:</strong> Plot No 466 Road No 9/3, Opp Avasa Building, Vaidehinagar, Vanastalipuram, Rangareddy, Telangana</li>
         <li><strong>Registered in:</strong> India</li>
       </ul>
     </div>
