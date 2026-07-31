@@ -2,15 +2,177 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #001219;
-  --foreground: #ffffff;
-  --primary: #0ea5e9;
-  --cta: #fbbf24;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Clears the fixed header (h-24 mobile / h-28 desktop) on anchor jumps */
+    scroll-padding-top: 8rem;
+  }
+
+  body {
+    @apply bg-ink text-white antialiased;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    @apply bg-brand text-ink;
+  }
+
+  /* Focus ring that stays visible on the dark base */
+  :focus-visible {
+    outline: 2px solid #e8722c;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
+@layer components {
+  /* Section shell — one source of truth for vertical rhythm */
+  .section {
+    @apply px-5 py-20 md:px-8 md:py-28;
+  }
+
+  .container-content {
+    @apply mx-auto w-full max-w-content;
+  }
+
+  /* Shared shell for the small uppercase labels above section headings.
+     Carries no font-size/letter-spacing so variants can set their own without
+     fighting @apply ordering. `whitespace-nowrap` is deliberate — these labels
+     must never wrap. */
+  .eyebrow-base {
+    @apply inline-flex max-w-full items-center gap-2 whitespace-nowrap rounded-full
+           border border-white/10 bg-white/[0.03] py-1.5 font-semibold uppercase
+           text-brand-light;
+  }
+
+  .eyebrow {
+    @apply eyebrow-base px-3.5 text-xs tracking-[0.18em];
+  }
+
+  /* The hero tagline is the longest label on the site. It scales down on narrow
+     viewports so it is guaranteed to stay on ONE line at any width. */
+  .eyebrow-tagline {
+    @apply eyebrow-base px-2.5 text-[9px] tracking-[0.06em]
+           min-[360px]:text-[10px] min-[360px]:tracking-[0.1em]
+           sm:px-3.5 sm:text-[11px] sm:tracking-[0.15em]
+           md:text-xs md:tracking-[0.18em];
+  }
+
+  .heading-1 {
+    @apply text-4xl font-bold leading-[1.08] tracking-[-0.02em] sm:text-5xl lg:text-[4rem];
+  }
+
+  .heading-2 {
+    @apply text-3xl font-bold leading-[1.15] tracking-[-0.02em] md:text-[2.75rem];
+  }
+
+  .body-lg {
+    @apply text-base leading-relaxed text-muted md:text-lg;
+  }
+
+  /* Surface used for every card on the site */
+  .card {
+    @apply rounded-2xl border border-white/[0.07] bg-white/[0.02] transition-colors duration-300;
+  }
+
+  .card-hover {
+    @apply hover:border-brand/30 hover:bg-white/[0.04];
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5
+           text-sm font-semibold transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand text-white hover:bg-brand-light
+           hover:shadow-[0_8px_30px_-8px_rgba(232,114,44,0.55)];
+  }
+
+  .btn-ghost {
+    @apply btn border border-white/20 text-white hover:border-white/40 hover:bg-white/5;
+  }
+
+  /*
+    Product CTA row. Every CTA — text buttons and store badges alike — shares one
+    height scale so they always sit side by side, on every device.
+
+    The scale is driven by the tightest case: a text button next to the Product
+    Hunt badge (4.63:1, the widest asset). Inside a card the usable width is the
+    viewport minus 40px of section gutter and 40px of card padding.
+  */
+  .cta-row {
+    @apply flex items-center gap-2 sm:gap-3;
+  }
+
+  /*
+    Each CTA gets flex-basis 0 and a flex-grow equal to its own aspect ratio, so
+    the row fills its full width with no trailing gap AND every badge lands on
+    the same height. The grow value is set inline from the asset's dimensions.
+  */
+  .cta-fill {
+    @apply min-w-0 basis-0;
+  }
+
+  .cta-badge {
+    @apply h-7 w-auto shrink-0 min-[400px]:h-8 min-[480px]:h-10 sm:h-11 lg:h-12;
+  }
+
+  /* Overrides .btn's own padding — declared after it so it wins in-layer. */
+  .cta-btn {
+    @apply h-7 shrink-0 whitespace-nowrap px-3 py-0 text-[11px]
+           min-[400px]:h-8 min-[480px]:h-10 min-[480px]:px-4 min-[480px]:text-xs
+           sm:h-11 sm:px-6 sm:text-sm lg:h-12;
+  }
 }
 
+@layer utilities {
+  .text-gradient-brand {
+    @apply bg-gradient-to-r from-brand-light via-brand to-brand-light bg-clip-text text-transparent;
+  }
+
+  /* Faint dot grid used behind the hero */
+  .bg-dots {
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.07) 1px,
+      transparent 1px
+    );
+    background-size: 28px 28px;
+  }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  }
+
+  .mask-fade-x {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

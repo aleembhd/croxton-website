@@ -1,22 +1,27 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { Services } from "@/components/services"
-import { WhyUs } from "@/components/why-us"
+import { Products } from "@/components/products"
+import { Testimonials } from "@/components/testimonials"
+import { Mission } from "@/components/mission"
 import { Technology } from "@/components/technology"
+import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
-// Remove or properly import Firebase if needed
-// import firebaseApp from "../firebase"
+import { HomeStructuredData } from "@/components/structured-data"
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <>
+      <HomeStructuredData />
       <Header />
-      <Hero />
-      <Services />
-      <WhyUs />
-      <Technology />
+      <main className="min-h-screen">
+        <Hero />
+        <Products />
+        <Testimonials />
+        <Mission />
+        <Technology />
+        <Contact />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }
-

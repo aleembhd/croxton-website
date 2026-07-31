@@ -1,103 +1,109 @@
-import React from 'react';
+import type { Metadata } from "next"
+import Link from "next/link"
+import { PageShell } from "@/components/page-shell"
+import { company, socials } from "@/lib/site"
+
+export const metadata: Metadata = {
+  title: "Shipping & Delivery",
+  description:
+    "How Croxton Technologies delivers access to its digital products — Telix, ResumeLab and Aperture.",
+}
 
 export default function ShippingDelivery() {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Shipping and Delivery Policy</h1>
-      
-      <p className="mb-4 text-sm md:text-base"><strong>Last Updated:</strong> January 2025</p>
-      
-      <p className="mb-4 text-sm md:text-base">
-        At Croxton Technologies, we're committed to delivering our AI services to you as quickly and efficiently as possible. 
-        Here's everything you need to know about how we deliver our services.
+    <PageShell
+      title="Shipping and Delivery Policy"
+      subtitle="Last updated: January 2025"
+    >
+      <p>
+        {company.legalName} sells <strong>digital products only</strong>. Nothing we
+        sell is shipped physically, so there are no couriers, tracking numbers or
+        delivery charges involved.
       </p>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">1. Our Services Delivery</h2>
-      <p className="mb-4 text-sm md:text-base">
-        We provide digital services that don't require physical shipping. Our delivery includes:
-      </p>
-      <ul className="list-disc pl-5 md:pl-6 mb-4 text-sm md:text-base">
-        <li><strong>AI Chatbots:</strong> We'll set up and deliver your chatbot via your website, app, or preferred platform.</li>
-        <li><strong>AI Voice Agents:</strong> We'll configure your voice agents and provide access through your preferred channels.</li>
-        <li><strong>Custom AI Applications:</strong> We'll build and deploy your custom app to your hosting environment or provide it as a ready-to-use solution.</li>
+
+      <h2>1. How delivery works</h2>
+      <ul>
+        <li>
+          <strong>Telix (Android):</strong> delivered through the Google Play Store.
+          Install the app and it is available on your device immediately. Any in-app
+          purchase unlocks within the app as soon as Google confirms payment.
+        </li>
+        <li>
+          <strong>ResumeLab (web app):</strong> delivered instantly in your browser at{" "}
+          <Link
+            href="https://resumelab.duckdns.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            resumelab.duckdns.org
+          </Link>
+          . Nothing to install.
+        </li>
+        <li>
+          <strong>Aperture (web app):</strong> launching soon. Waitlist members receive
+          an access link by email at launch.
+        </li>
       </ul>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">2. Delivery Timeframes</h2>
-      <p className="mb-4 text-sm md:text-base">
-        Here's how long it typically takes us to deliver:
-      </p>
-      <ul className="list-disc pl-5 md:pl-6 mb-4 text-sm md:text-base">
-        <li><strong>Basic Chatbots:</strong> 1-3 business days</li>
-        <li><strong>Voice Agent Systems:</strong> 3-7 business days</li>
-        <li><strong>Custom AI Applications:</strong> 1-4 weeks (we'll give you a specific timeline based on your project)</li>
+
+      <h2>2. Delivery timeframe</h2>
+      <ul>
+        <li>
+          <strong>Free access:</strong> immediate, as soon as you install the app or
+          open the web product.
+        </li>
+        <li>
+          <strong>Paid plans:</strong> activated automatically within minutes of a
+          successful payment.
+        </li>
+        <li>
+          <strong>If a payment succeeds but access does not unlock:</strong> email us and
+          we will activate it manually, usually within 24 hours on business days.
+        </li>
       </ul>
-      <p className="mb-4 text-sm md:text-base">
-        We'll always keep you updated on our progress and let you know if there are any delays.
+
+      <h2>3. Confirmation</h2>
+      <p>
+        You receive an email confirmation and receipt for every paid purchase. Keep the
+        payment or order ID — it is what we need to help you fastest.
       </p>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">3. Pricing</h2>
-      <p className="mb-4 text-sm md:text-base">
-        Our pricing is straightforward:
-      </p>
-      <ul className="list-disc pl-5 md:pl-6 mb-4 text-sm md:text-base">
-        <li>We'll provide a clear quote before starting any work</li>
-        <li>For standard services, we list prices on our website</li>
-        <li>For custom work, we'll give you a detailed proposal with all costs</li>
-       
+
+      <h2>4. Availability</h2>
+      <ul>
+        <li>Our products are available worldwide, with no extra charge by region.</li>
+        <li>
+          A current browser is required for our web products; Telix requires a supported
+          Android version as listed on its Play Store page.
+        </li>
+        <li>
+          Some features depend on third-party services, so availability can vary
+          briefly during an outage.
+        </li>
       </ul>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">4. Service Tracking</h2>
-      <p className="mb-4 text-sm md:text-base">
-        Once you place an order with us:
-      </p>
-      <ul className="list-disc pl-5 md:pl-6 mb-4 text-sm md:text-base">
-        <li>You'll receive confirmation by email</li>
-        <li>We'll provide regular updates on your project's progress</li>
-        <li>You'll have direct contact with our team throughout the process</li>
-        <li>We'll send final delivery details when your service is ready to use</li>
+
+      <h2>5. Problems after delivery</h2>
+      <ul>
+        <li>Contact us and we will help you get the product working.</li>
+        <li>Bugs and access issues are fixed at no additional cost.</li>
+        <li>
+          If we cannot resolve a problem that prevents you from using a paid feature,
+          see our <Link href="/refund-cancellation">Refund and Cancellation Policy</Link>
+          .
+        </li>
       </ul>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">5. Global Services</h2>
-      <p className="mb-4 text-sm md:text-base">
-        We provide our AI services to clients worldwide:
-      </p>
-      <ul className="list-disc pl-5 md:pl-6 mb-4 text-sm md:text-base">
-        <li>No additional charges for international clients</li>
-        <li>We work across different time zones</li>
-        <li>We can accommodate multiple languages for AI chatbots and voice agents</li>
-        <li>All communication and service delivery is handled digitally</li>
+
+      <h2>6. Contact us</h2>
+      <ul>
+        <li>
+          <strong>Email:</strong> <Link href={socials.email}>{company.email}</Link>
+        </li>
+        <li>
+          <strong>Phone:</strong>{" "}
+          <Link href={`tel:${company.phone}`}>{company.phoneDisplay}</Link>
+        </li>
+        <li>
+          <strong>Hours:</strong> {company.hours}
+        </li>
       </ul>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">6. Service Availability</h2>
-      <p className="mb-4 text-sm md:text-base">
-        Our services are widely available, but please note:
-      </p>
-      <ul className="list-disc pl-5 md:pl-6 mb-4 text-sm md:text-base">
-        <li>Some features may depend on your existing website or system capabilities</li>
-        <li>We'll let you know if there are any technical limitations before we start</li>
-        <li>We aim to find solutions that work for every client's situation</li>
-      </ul>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">7. Issues After Delivery</h2>
-      <p className="mb-4 text-sm md:text-base">
-        If you encounter any issues with our services after delivery:
-      </p>
-      <ul className="list-disc pl-5 md:pl-6 mb-4 text-sm md:text-base">
-        <li>Contact us within 7 days for immediate assistance</li>
-        <li>We'll address bugs or issues with our AI services at no additional cost</li>
-        <li>We provide basic training on how to use the delivered services</li>
-        <li>Additional support options are available if needed</li>
-      </ul>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">8. Contact Us</h2>
-      <p className="mb-4 text-sm md:text-base">
-        Need help or have questions about our delivery process? We're here for you:
-      </p>
-      <ul className="list-disc pl-5 md:pl-6 mb-4 text-sm md:text-base">
-        <li>Email: <a href="mailto:croxtontechnologies@gmail.com" className="text-blue-600 hover:underline">croxtontechnologies@gmail.com</a></li>
-        <li>Phone: <a href="tel:+917672029401" className="text-blue-600 hover:underline">+91 7672029401</a></li>
-        <li>We typically respond within 24 hours on business days</li>
-      </ul>
-    </div>
-  );
-} 
+    </PageShell>
+  )
+}

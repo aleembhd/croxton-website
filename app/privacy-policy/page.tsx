@@ -1,63 +1,120 @@
-import React from 'react';
+import type { Metadata } from "next"
+import Link from "next/link"
+import { PageShell } from "@/components/page-shell"
+import { company, socials } from "@/lib/site"
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "How Croxton Technologies collects, uses and protects information across our website and products.",
+}
 
 export default function PrivacyPolicy() {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Privacy Policy</h1>
-      
-      <p className="mb-4 text-sm md:text-base"><strong>Effective Date:</strong> January 2025</p>
-      
-      <p className="mb-4 text-sm md:text-base">
-        Croxton Technologies ("Croxton", "we", "our", or "us") values your privacy and is committed to protecting the information you share with us. 
-        This Privacy Policy explains how we collect, use, disclose, and protect your information.
+    <PageShell title="Privacy Policy" subtitle="Effective date: January 2025">
+      <p>
+        {company.legalName} (&ldquo;Croxton&rdquo;, &ldquo;we&rdquo;,
+        &ldquo;our&rdquo;, or &ldquo;us&rdquo;) values your privacy. This policy
+        explains how we collect, use, disclose and protect information across this
+        website and the products we build — Telix, ResumeLab and Aperture.
       </p>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">1. Information We Collect</h2>
-      <ul className="list-disc pl-5 md:pl-6 mb-4 text-sm md:text-base">
-        <li><strong>Personal Information:</strong> Name, email, phone number, company name, etc.</li>
-        <li><strong>Technical Data:</strong> IP address, browser type, device information, and pages visited.</li>
-        <li><strong>Usage Data:</strong> Interaction with our services via cookies and analytics tools.</li>
+
+      <h2>1. Information we collect</h2>
+      <ul>
+        <li>
+          <strong>Information you give us:</strong> name, email address, phone number
+          and any details you send when you contact us or create a product account.
+        </li>
+        <li>
+          <strong>Content you upload:</strong> files you choose to submit to a product,
+          such as a resume in ResumeLab or event photos and a selfie in Aperture.
+        </li>
+        <li>
+          <strong>Technical data:</strong> IP address, browser type, device information
+          and pages visited.
+        </li>
+        <li>
+          <strong>Usage data:</strong> how you interact with our website and products,
+          collected via cookies and analytics tools.
+        </li>
       </ul>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">2. How We Use Your Information</h2>
-      <p className="mb-2 text-sm md:text-base">We use collected information to:</p>
-      <ul className="list-disc pl-5 md:pl-6 mb-4 text-sm md:text-base">
-        <li>Provide and improve our services.</li>
-        <li>Respond to your inquiries and offer support.</li>
-        <li>Send updates or promotional materials (only with consent).</li>
-        <li>Comply with legal requirements.</li>
+
+      <h2>2. Data that never reaches us</h2>
+      <p>
+        Some of our products are designed so that your data stays with you.{" "}
+        <strong>Telix</strong> stores your call history, notes, tags, reminders and
+        analytics <strong>on your device only</strong> — we do not receive, upload or
+        store your call data on our servers.
+      </p>
+
+      <h2>3. How we use your information</h2>
+      <ul>
+        <li>To provide, operate and improve our products and website.</li>
+        <li>To process the content you upload so a product can do its job.</li>
+        <li>To respond to your questions and provide support.</li>
+        <li>To process payments and issue receipts.</li>
+        <li>To send product updates or announcements, only with your consent.</li>
+        <li>To meet our legal and regulatory obligations.</li>
       </ul>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">3. Sharing Your Information</h2>
-      <p className="mb-2 text-sm md:text-base">
-        We do <strong>not</strong> sell or rent your data. We may share information with:
+
+      <h2>4. Sharing your information</h2>
+      <p>
+        We do <strong>not</strong> sell or rent your data. We share it only with:
       </p>
-      <ul className="list-disc pl-5 md:pl-6 mb-4 text-sm md:text-base">
-        <li>Trusted service providers under confidentiality.</li>
-        <li>Legal authorities, if required by law.</li>
+      <ul>
+        <li>
+          Trusted service providers who help us operate our products — such as hosting,
+          analytics, AI processing and payment gateway providers — under
+          confidentiality obligations.
+        </li>
+        <li>Legal or regulatory authorities, where required by law.</li>
       </ul>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">4. Cookies</h2>
-      <p className="mb-4 text-sm md:text-base">
-        We use cookies for performance and analytics. You can disable them via your browser settings.
+
+      <h2>5. Retention and deletion</h2>
+      <p>
+        We keep the content you upload only as long as needed to deliver the feature you
+        asked for, plus any period required by law. You can ask us to delete your
+        account and associated content at any time by emailing{" "}
+        <Link href={socials.email}>{company.email}</Link>.
       </p>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">5. Data Security</h2>
-      <p className="mb-4 text-sm md:text-base">
-        We use encryption, secure servers, and access controls to safeguard your data.
+
+      <h2>6. Cookies</h2>
+      <p>
+        We use cookies for performance and analytics on this website. You can disable
+        them through your browser settings; core pages will continue to work.
       </p>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">6. Your Rights</h2>
-      <p className="mb-2 text-sm md:text-base">You may:</p>
-      <ul className="list-disc pl-5 md:pl-6 mb-4 text-sm md:text-base">
-        <li>Access, correct, or delete your data.</li>
+
+      <h2>7. Data security</h2>
+      <p>
+        We use encryption in transit, secure hosting and access controls to safeguard
+        your data. No system is perfectly secure, but we work to limit both the amount
+        of data we hold and the number of people who can reach it.
+      </p>
+
+      <h2>8. Your rights</h2>
+      <ul>
+        <li>Access, correct or delete the data we hold about you.</li>
         <li>Withdraw your consent at any time.</li>
+        <li>Ask us how a specific product handles your data.</li>
       </ul>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">7. Contact Us</h2>
-      <p className="mb-4 text-sm md:text-base">
-        For any privacy concerns, email us at <a href="mailto:croxtontechnologies@gmail.com" className="text-blue-600 hover:underline">croxtontechnologies@gmail.com</a>.
+
+      <h2>9. Children</h2>
+      <p>
+        Our products are not directed at children under 13, and we do not knowingly
+        collect their personal information.
       </p>
-    </div>
-  );
-} 
+
+      <h2>10. Changes to this policy</h2>
+      <p>
+        If we make material changes, we will update the effective date above and, where
+        appropriate, notify users inside the affected product.
+      </p>
+
+      <h2>11. Contact us</h2>
+      <p>
+        For any privacy concern or request, email{" "}
+        <Link href={socials.email}>{company.email}</Link>.
+      </p>
+    </PageShell>
+  )
+}

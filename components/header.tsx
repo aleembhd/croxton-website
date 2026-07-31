@@ -5,106 +5,128 @@ import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
+import { navLinks } from "@/lib/site"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = "unset"
+    document.body.style.overflow = isMenuOpen ? "hidden" : ""
+    return () => {
+      document.body.style.overflow = ""
     }
   }, [isMenuOpen])
 
-  const scrollToSection = (sectionId: string) => {
-    setIsMenuOpen(false)
-    const element = document.getElementById(sectionId)
-    element?.scrollIntoView({ behavior: "smooth" })
-  }
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 12)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMenuOpen(false)
+    }
+    window.addEventListener("keydown", onKeyDown)
+    return () => window.removeEventListener("keydown", onKeyDown)
+  }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#001219]">
-      <div className="container mx-auto px-6 h-24 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <Image 
-            src="/croxton-logo.png"
-            alt="CROXTON" 
-            width={200}
-            height={50}
-            className="h-20 w-[200px] md:w-[200px]"
-            priority
-            onError={(e) => {
-              console.error('Error loading image:', e);
-            }}
-          />
-        </Link>
+    <>
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+          isScrolled
+            ? "border-b border-white/[0.07] bg-ink/80 backdrop-blur-xl"
+            : "bg-transparent",
+        )}
+      >
+        <div className="container-content flex h-20 items-center justify-between px-5 md:h-24 md:px-8">
+          <Link
+            href="/"
+            className="flex shrink-0 items-center"
+            aria-label="Croxton Technologies — home"
+          >
+            <Image
+              src="/croxton-logo.webp"
+              alt="Croxton Technologies — Where Technology Meets Efficiency"
+              width={480}
+              height={193}
+              priority
+              className="h-12 w-auto md:h-16"
+            />
+          </Link>
 
-        {/* Mobile Navigation */}
-        <div
-          className={cn(
-            "fixed top-0 right-0 h-full w-80 bg-[#001219] transform transition-transform duration-300 ease-in-out z-50",
-            isMenuOpen ? "translate-x-0" : "translate-x-full",
-          )}
-        >
-          <div className="p-6 bg-[#001219] h-full">
-            <button className="absolute top-7 right-4" onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
-              <X className="h-6 w-6" />
-            </button>
+          {/* Section links — no CTA button, the hero already carries that */}
+          <nav className="hidden items-center gap-1 lg:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-lg px-3.5 py-2 text-sm font-medium text-muted transition-colors hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
 
-            <nav className="flex flex-col space-y-8 mt-16">
-              <button
-                onClick={() => scrollToSection("hero")}
-                className="text-lg font-medium hover:text-primary text-left"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => scrollToSection("services")}
-                className="text-lg font-medium hover:text-primary text-left"
-              >
-                Services
-              </button>
-              <button
-                onClick={() => scrollToSection("why-us")}
-                className="text-lg font-medium hover:text-primary text-left"
-              >
-                Why Us
-              </button>
-              <button
-                onClick={() => scrollToSection("technology")}
-                className="text-lg font-medium hover:text-primary text-left"
-              >
-                Technology
-              </button>
-              <Link href="/youtube" className="text-lg font-medium hover:text-primary">
-                YouTube Channel
-              </Link>
-              <Link href="/community" className="text-lg font-medium hover:text-primary">
-                AI Community
-              </Link>
-            </nav>
-          </div>
+          <button
+            className="rounded-lg p-2 text-white lg:hidden"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Open menu"
+            aria-expanded={isMenuOpen}
+          >
+            <Menu className="h-6 w-6" />
+          </button>
+        </div>
+      </header>
+
+      {/* Backdrop */}
+      <div
+        onClick={() => setIsMenuOpen(false)}
+        aria-hidden="true"
+        className={cn(
+          "fixed inset-0 z-50 bg-ink/70 backdrop-blur-sm transition-opacity duration-300 lg:hidden",
+          isMenuOpen ? "opacity-100" : "pointer-events-none opacity-0",
+        )}
+      />
+
+      {/* Mobile drawer */}
+      <div
+        className={cn(
+          "fixed right-0 top-0 z-50 h-full w-[85%] max-w-sm border-l border-white/[0.07]",
+          "bg-ink-800 transition-transform duration-300 ease-out lg:hidden",
+          isMenuOpen ? "translate-x-0" : "translate-x-full",
+        )}
+      >
+        <div className="flex h-20 items-center justify-between px-6">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+            Menu
+          </span>
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            aria-label="Close menu"
+            className="rounded-lg p-2 text-white"
+          >
+            <X className="h-5 w-5" />
+          </button>
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/" className="text-base font-medium hover:text-primary">
-            HOME
-          </Link>
-          <Link href="/youtube" className="text-base font-medium hover:text-primary">
-            YOUTUBE CHANNEL
-          </Link>
-          <Link href="/community" className="text-base font-medium hover:text-primary">
-            AI COMMUNITY
-          </Link>
+        <nav className="flex flex-col px-6 pt-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsMenuOpen(false)}
+              className="border-b border-white/[0.07] py-4 text-lg font-medium text-white"
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
-
-        <button className="md:hidden z-50" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
-          <Menu className="h-8 w-8" />
-        </button>
       </div>
-    </header>
+    </>
   )
 }
-

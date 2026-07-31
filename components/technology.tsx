@@ -1,78 +1,48 @@
 import Image from "next/image"
 
+const logos = [
+  { src: "/openai.webp", alt: "OpenAI" },
+  { src: "/claude.webp", alt: "Claude" },
+  { src: "/deepseek.webp", alt: "DeepSeek" },
+  { src: "/qwen2.5.webp", alt: "Qwen" },
+  { src: "/firebase.webp", alt: "Firebase" },
+  { src: "/cursor.webp", alt: "Cursor" },
+  { src: "/v0.webp", alt: "v0" },
+  { src: "/voiceflow.webp", alt: "Voiceflow" },
+]
+
 export function Technology() {
   return (
-    <section id="technology" className="py-2 px-4">
-      <div className="container mx-auto text-center">
-      <h3 className="text-2xl font-bold mb-4">CUTTING EDGE AI</h3>
-        <div className="border border-[#0ea5e9] border-[0.2px] rounded-lg p-4 py-5">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">Best-in-Class AI Technology</h2>
-          <p className="text-gray-300 max-w-3xl mx-auto">
-          We use state-of-the-art AI technology to deliver exceptional AI voice agents, chatbots, and custom-coded solutions tailored to your specific needs.
+    <section className="section border-t border-white/[0.07]">
+      <div className="container-content">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="eyebrow">Our toolkit</p>
+          <h2 className="mt-6 text-2xl font-bold tracking-[-0.01em] md:text-3xl">
+            Built with the best tools available
+          </h2>
+          <p className="body-lg mt-4">
+            We stay deliberately unromantic about our stack — we use whatever gets a
+            working product into someone&apos;s hands fastest.
           </p>
-          </div>
-        <div className="mb-12"></div>
+        </div>
+      </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center">
-          <Image
-            src="/deepseek.png"
-            alt="Deepseek Logo"
-            width={120}
-            height={40}
-            className="opacity-70 hover:opacity-100 transition-opacity"
-          />
-          <Image
-            src="/qwen2.5.png"
-            alt="Qwen Logo"
-            width={120}
-            height={40}
-            className="opacity-70 hover:opacity-100 transition-opacity"
-          />
-          <Image
-            src="/openai.png"
-            alt="OpenAI Logo"
-            width={120}
-            height={40}
-            className="opacity-70 hover:opacity-100 transition-opacity"
-          />
-          <Image
-            src="/claude.png"
-            alt="Claude Logo"
-            width={120}
-            height={40}
-            className="opacity-70 hover:opacity-100 transition-opacity"
-          />
-          <Image
-            src="/v0.png"
-            alt="V0 Logo"
-            width={120}
-            height={40}
-            className="opacity-70 hover:opacity-100 transition-opacity"
-          />
-          <Image
-            src="/voiceflow.png"
-            alt="Voiceflow Logo"
-            width={120}
-            height={40}
-            className="opacity-70 hover:opacity-100 transition-opacity"
-          />
-          <Image
-            src="/cursor.png"
-            alt="Cursor Logo"
-            width={120}
-            height={40}
-            className="opacity-70 hover:opacity-100 transition-opacity"
-          />
-          <Image
-            src="/firebase.png"
-            alt="Firebase Logo"
-            width={120}
-            height={40}
-            className="opacity-70 hover:opacity-100 transition-opacity"
-          />
+      {/* Edge-to-edge marquee */}
+      <div className="mask-fade-x relative mt-14 overflow-hidden">
+        <div className="flex w-max animate-marquee items-center gap-14 md:gap-20">
+          {[...logos, ...logos].map((logo, i) => (
+            <Image
+              key={`${logo.alt}-${i}`}
+              src={logo.src}
+              alt={logo.alt}
+              width={120}
+              height={40}
+              aria-hidden={i >= logos.length}
+              className="h-8 w-auto shrink-0 opacity-45 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 md:h-10"
+            />
+          ))}
         </div>
       </div>
     </section>
   )
 }
-

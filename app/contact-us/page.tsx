@@ -1,27 +1,81 @@
-import React from 'react';
+import type { Metadata } from "next"
+import Link from "next/link"
+import { PageShell } from "@/components/page-shell"
+import { company, socials } from "@/lib/site"
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Get in touch with Croxton Technologies about our products, support, or the Aperture waitlist.",
+}
 
 export default function ContactUs() {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Contact Us</h1>
-      
-      <p className="mb-6 text-sm md:text-base">
-        We'd love to hear from you. Whether you have a question about features, pricing, or anything else, our team is ready to help.
-      </p>
-      
-      <h2 className="text-xl md:text-2xl font-bold mt-6 mb-3 md:mb-4">Business Details</h2>
-      <ul className="list-none pl-0 mb-4 space-y-3 text-sm md:text-base">
-        <li><strong>Company Name:</strong> Croxton Technologies </li>
-        <li><strong>Address:</strong> Plot No 466 Road No 9/3, Opp Avasa Building, Vaidehinagar, Vanastalipuram, Rangareddy, Telangana</li>
-        <li><strong>Email:</strong> <a href="mailto:croxtontechnologies@gmail.com" className="text-blue-600 hover:underline">croxtontechnologies@gmail.com</a></li>
-        <li><strong>Phone:</strong> <a href="tel:+917672029401" className="text-blue-600 hover:underline">7672029401</a></li>
-        <li><strong>Working Hours:</strong> Monday to Saturday, 10:00 AM – 6:00 PM IST</li>
-        <li><strong>Registered in:</strong> India</li>
+    <PageShell
+      title="Contact Us"
+      subtitle="Product support, feedback, or a problem you think we should solve — we read everything."
+    >
+      <h2>Reach us directly</h2>
+      <ul>
+        <li>
+          <strong>Email:</strong> <Link href={socials.email}>{company.email}</Link> —
+          best for support and detailed questions.
+        </li>
+        <li>
+          <strong>WhatsApp:</strong>{" "}
+          <Link href={socials.whatsapp} target="_blank" rel="noopener noreferrer">
+            {company.phoneDisplay}
+          </Link>{" "}
+          — quickest for a short question.
+        </li>
+        <li>
+          <strong>Phone:</strong>{" "}
+          <Link href={`tel:${company.phone}`}>{company.phoneDisplay}</Link>
+        </li>
       </ul>
-      
-      <p className="mt-6 text-sm md:text-base">
-        Feel free to contact us through the form on our website or directly by email or phone.
-      </p>
-    </div>
-  );
-} 
+      <p>We typically respond within 24 hours on business days.</p>
+
+      <h2>Follow our work</h2>
+      <ul>
+        <li>
+          <Link href={socials.linkedin} target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </Link>{" "}
+          — company updates and product launches.
+        </li>
+        <li>
+          <Link href={socials.twitter} target="_blank" rel="noopener noreferrer">
+            X (Twitter)
+          </Link>{" "}
+          — build-in-public notes.
+        </li>
+        <li>
+          <Link href={socials.instagram} target="_blank" rel="noopener noreferrer">
+            Instagram
+          </Link>{" "}
+          and{" "}
+          <Link href={socials.softwareFactory} target="_blank" rel="noopener noreferrer">
+            Software Factory
+          </Link>{" "}
+          — where we post our content.
+        </li>
+      </ul>
+
+      <h2>Business details</h2>
+      <ul>
+        <li>
+          <strong>Company name:</strong> {company.legalName}
+        </li>
+        <li>
+          <strong>Address:</strong> {company.address}
+        </li>
+        <li>
+          <strong>Working hours:</strong> {company.hours}
+        </li>
+        <li>
+          <strong>Registered in:</strong> India
+        </li>
+      </ul>
+    </PageShell>
+  )
+}
