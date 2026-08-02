@@ -42,13 +42,19 @@ export const company = {
  * him and are public: a wrong entry actively tells Google the wrong profile is
  * this person, which is worse than omitting it.
  *
- * TODO: add the personal LinkedIn profile once his headline can name Croxton,
- * and his personal X handle (distinct from the company @croxtonai account).
+ * DO NOT add the personal GitHub profile here. That is a deliberate decision,
+ * not an oversight — it hosts personal repositories that are sometimes public,
+ * and linking it from the company site would point visitors straight at them.
+ *
+ * Candidates to add later, all professional-only surfaces with no code exposure:
+ *   - personal LinkedIn, once its headline can name Croxton
+ *   - Product Hunt maker profile (already listed on Telix and ResumeLab)
+ *   - Crunchbase or a similar company/founder directory
  */
 export const founder = {
   name: "Abdul Aleem",
   jobTitle: "Founder",
-  sameAs: ["https://github.com/aleembhd"],
+  sameAs: [] as string[],
 }
 
 export const socials = {
