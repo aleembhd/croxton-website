@@ -1,4 +1,11 @@
-import { company, siteUrl, socials, products, type Product } from "@/lib/site"
+import {
+  company,
+  siteUrl,
+  socials,
+  products,
+  founder,
+  type Product,
+} from "@/lib/site"
 
 /**
  * schema.org JSON-LD. This is how Google, Bing and AI assistants (ChatGPT,
@@ -17,6 +24,27 @@ function JsonLd({ data }: { data: object }) {
 }
 
 const organizationId = `${siteUrl}/#organization`
+const founderId = `${siteUrl}/#founder`
+
+/**
+ * The founder as a distinct Person entity, cross-linked with the Organization
+ * (`founder` ↔ `worksFor`). Both directions matter: it's the pair of references
+ * that lets a search engine treat "Abdul Aleem" and "Croxton Technologies" as
+ * two connected entities rather than two unrelated strings.
+ *
+ * Renders no visible text — this is metadata only.
+ */
+export function personSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": founderId,
+    name: founder.name,
+    jobTitle: founder.jobTitle,
+    worksFor: { "@id": organizationId },
+    ...(founder.sameAs.length > 0 ? { sameAs: founder.sameAs } : {}),
+  }
+}
 
 export function organizationSchema() {
   return {
@@ -31,6 +59,7 @@ export function organizationSchema() {
     slogan: company.tagline,
     description: company.definition,
     foundingDate: company.founded,
+    founder: { "@id": founderId },
     email: company.email,
     telephone: company.phone,
     address: {
@@ -124,6 +153,7 @@ export function HomeStructuredData() {
   return (
     <>
       <JsonLd data={organizationSchema()} />
+      <JsonLd data={personSchema()} />
       <JsonLd data={websiteSchema()} />
       {products.map((product) => (
         <JsonLd key={product.slug} data={productSchema(product)} />

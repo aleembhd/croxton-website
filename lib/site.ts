@@ -5,11 +5,14 @@
  */
 
 /**
- * The canonical origin used for canonical URLs, sitemap, robots and JSON-LD.
- * IMPORTANT for SEO: change this in ONE place the moment a custom domain
- * (e.g. https://croxton.in) is pointed at Firebase Hosting.
+ * The canonical origin used for canonical URLs, sitemap, robots and JSON-LD,
+ * and for every schema.org @id on the site.
+ *
+ * Must match the host that actually serves the site. On Vercel the bare
+ * croxton.in issues a 308 redirect to www.croxton.in, which makes www the
+ * canonical host — so this is the www form.
  */
-export const siteUrl = "https://croxton-website.web.app"
+export const siteUrl = "https://www.croxton.in"
 
 export const company = {
   name: "CROXTON",
@@ -28,6 +31,30 @@ export const company = {
   address:
     "Plot No 466, Road No 9/3, Opp Avasa Building, Vaidehinagar, Vanastalipuram, Rangareddy, Telangana, India",
   hours: "Monday to Saturday, 10:00 AM – 6:00 PM IST",
+}
+
+/**
+ * Founder identity. Emitted ONLY as schema.org structured data — deliberately
+ * not rendered anywhere on the site.
+ *
+ * `sameAs` is the property that lets Google merge separate public profiles into
+ * a single Knowledge Graph person. Only add profiles that genuinely belong to
+ * him and are public: a wrong entry actively tells Google the wrong profile is
+ * this person, which is worse than omitting it.
+ *
+ * DO NOT add the personal GitHub profile here. That is a deliberate decision,
+ * not an oversight — it hosts personal repositories that are sometimes public,
+ * and linking it from the company site would point visitors straight at them.
+ *
+ * Candidates to add later, all professional-only surfaces with no code exposure:
+ *   - personal LinkedIn, once its headline can name Croxton
+ *   - Product Hunt maker profile (already listed on Telix and ResumeLab)
+ *   - Crunchbase or a similar company/founder directory
+ */
+export const founder = {
+  name: "Abdul Aleem",
+  jobTitle: "Founder",
+  sameAs: [] as string[],
 }
 
 export const socials = {
