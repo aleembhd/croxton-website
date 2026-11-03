@@ -20,7 +20,7 @@ export const company = {
   tagline: "Where Technology Meets Efficiency",
   /** One-sentence definition. This is the line search engines and AI assistants quote. */
   definition:
-    "Croxton Technologies is an independent software product company based in Hyderabad, India, that builds and runs its own products — Telix, ResumeLab and Aperture AI.",
+    "Croxton Technologies is an independent software product company based in Hyderabad, India, that builds and runs its own products — Telix, ResumeLab, GymNotify and Aperture AI.",
   city: "Hyderabad",
   region: "Telangana",
   country: "India",
@@ -109,7 +109,8 @@ export type Product = {
   schemaCategory: string
   /** schema.org operatingSystem */
   schemaOs: string
-  price: string
+  /** Leave out for products sold on a quote; the schema.org Offer is then omitted */
+  price?: string
   /** Poster/preview image and its intrinsic dimensions, used to reserve layout space */
   image: { src: string; width: number; height: number }
   /** Transparent product wordmark, recoloured for the dark UI */
@@ -390,6 +391,88 @@ export const products: Product[] = [
     logo: { src: "/aperture-logo.webp", width: 1039, height: 192 },
     accent: "from-violet-400/25 to-brand/10",
   },
+  {
+    slug: "gymnotify",
+    name: "GymNotify",
+    category: "Gym Management Software",
+    platform: "Android · iOS · Windows · Mac",
+    availability: "Live in gyms",
+    status: "live",
+    tagline: "Manage your whole gym at your fingertips.",
+    problem:
+      "Most gym software is complicated: too many menus, too many buttons, and it needs a computer at the front desk. The fingerprint machine lets in members whose plan has ended, renewals are chased by hand, and nobody can tell at a glance who paid, who is due and who is in the gym right now.",
+    solution:
+      "GymNotify keeps only what a gym owner needs, on the phone. Enroll a member and register their finger in one step, and the door opens only while the plan is paid. Receipts and renewal reminders go out on WhatsApp by themselves, and every payment, every entry and every trainer's clients are a tap away.",
+    description:
+      "Simple gym management software. Enroll members and register fingerprints from your phone, open the door only for paid members, send WhatsApp receipts and renewal reminders automatically, and see payments, attendance and personal training at a glance. Works on Android, iOS, Windows and Mac.",
+    features: [
+      "Door opens only while the plan is paid",
+      "Enroll and register a finger from your phone",
+      "Automatic WhatsApp receipts and reminders",
+      "Every payment, today or any month",
+      "Live view of who is in the gym",
+    ],
+    problemPoints: [
+      {
+        title: "Too many menus",
+        body: "Most gym software buries the few things an owner needs under dozens of buttons.",
+      },
+      {
+        title: "Stuck at the front desk",
+        body: "It needs a computer, so nothing can be checked from the phone.",
+      },
+      {
+        title: "Expired members still walk in",
+        body: "The fingerprint machine doesn't know who has stopped paying.",
+      },
+      {
+        title: "Renewals depend on memory",
+        body: "Calling every member before their plan ends is slow and easy to skip.",
+      },
+      {
+        title: "The money is hard to follow",
+        body: "Who paid, how much, and by cash, UPI or card ends up in a notebook.",
+      },
+    ],
+    solutionPoints: [
+      {
+        title: "The door follows the payment",
+        body: "A member's finger opens the door only while the plan is active, and again after renewal.",
+      },
+      {
+        title: "Enroll in one step",
+        body: "Name, plan and payment, then register the finger from the phone.",
+      },
+      {
+        title: "WhatsApp does the reminding",
+        body: "A receipt after every payment, and reminders before and after the end date, sent automatically.",
+      },
+      {
+        title: "Your gym, live",
+        body: "Who is in the gym now, who came today, and whether the door machine is connected.",
+      },
+      {
+        title: "Payments, staff and trainers",
+        body: "Every payment by day or month, staff attendance from their finger, and each trainer's clients.",
+      },
+    ],
+    audience: "Gym owners, fitness centres and studios",
+    href: socials.whatsapp,
+    ctaLabel: "Book a free demo",
+    descriptor: "Simple gym software with fingerprint door access",
+    searchTerms: [
+      "gym management software",
+      "gym software with fingerprint access",
+      "biometric gym door access control",
+      "gym membership management app",
+      "gym WhatsApp renewal reminders",
+    ],
+    schemaCategory: "BusinessApplication",
+    schemaOs: "Android, iOS, Windows, macOS",
+    image: { src: "/gymnotify.webp", width: 1600, height: 1132 },
+    logo: { src: "/gymnotify-logo.webp", width: 902, height: 192 },
+    accent: "from-emerald-400/25 to-brand/10",
+  },
 ]
 
 /**
@@ -428,11 +511,11 @@ export const testimonials: Testimonial[] = []
 export const faqs = [
   {
     q: "What is Croxton Technologies?",
-    a: "Croxton Technologies is an independent software product company based in Hyderabad, Telangana, India. Rather than doing client projects, Croxton builds and runs its own products: Telix, an Android dialer and call tracker; ResumeLab, an AI resume builder; and Aperture AI, an AI photo search tool for events.",
+    a: "Croxton Technologies is an independent software product company based in Hyderabad, Telangana, India. Rather than doing client projects, Croxton builds and runs its own products: Telix, an Android dialer and call tracker; ResumeLab, an AI resume builder; GymNotify, simple gym management software; and Aperture AI, an AI photo search tool for events.",
   },
   {
     q: "What products does Croxton Technologies make?",
-    a: "Croxton Technologies currently makes three products. Telix is an Android dialer and call tracker with notes, tags, reminders and offline analytics. ResumeLab is a web app that builds ATS-friendly resumes with AI assistance and exports them as PDF or DOCX. Aperture AI is a web app that uses face recognition to find every photo you appear in from a large event gallery, and is launching soon.",
+    a: "Croxton Technologies currently makes four products. Telix is an Android dialer and call tracker with notes, tags, reminders and offline analytics. ResumeLab is a web app that builds ATS-friendly resumes with AI assistance and exports them as PDF or DOCX. GymNotify is simple gym management software: members' fingerprints open the gym door only while their plan is paid, and receipts and renewal reminders go out on WhatsApp automatically. Aperture AI is a web app that uses face recognition to find every photo you appear in from a large event gallery, and is launching soon.",
   },
   {
     q: "What is Telix and who is it for?",
