@@ -20,7 +20,7 @@ export const company = {
   tagline: "Where Technology Meets Efficiency",
   /** One-sentence definition. This is the line search engines and AI assistants quote. */
   definition:
-    "Croxton Technologies is an independent software product company based in Hyderabad, India, that builds and runs its own products — Telix, ResumeLab and Aperture AI.",
+    "Croxton Technologies is an independent software product company based in Hyderabad, India, that builds and runs its own products — Telix, ResumeLab, GymNotify and Aperture AI.",
   city: "Hyderabad",
   region: "Telangana",
   country: "India",
@@ -109,7 +109,8 @@ export type Product = {
   schemaCategory: string
   /** schema.org operatingSystem */
   schemaOs: string
-  price: string
+  /** Leave out for products sold on a quote; the schema.org Offer is then omitted */
+  price?: string
   /** Poster/preview image and its intrinsic dimensions, used to reserve layout space */
   image: { src: string; width: number; height: number }
   /** Transparent product wordmark, recoloured for the dark UI */
@@ -390,6 +391,88 @@ export const products: Product[] = [
     logo: { src: "/aperture-logo.webp", width: 1039, height: 192 },
     accent: "from-violet-400/25 to-brand/10",
   },
+  {
+    slug: "gymnotify",
+    name: "GymNotify",
+    category: "WhatsApp Alerts for Gyms",
+    platform: "WhatsApp",
+    availability: "Live on WhatsApp",
+    status: "live",
+    tagline: "Every member reminded. Every payment confirmed.",
+    problem:
+      "Gym memberships run out quietly. Nobody reminds the member, receipts are handwritten or never given, and by the time anyone notices, the member has stopped coming and the renewal is lost.",
+    solution:
+      "GymNotify sends the right WhatsApp message at the right moment, automatically: a receipt the moment a payment is saved, a reminder before the membership ends and a note when it has ended. Every message carries the gym's own name and phone number.",
+    description:
+      "Automatic WhatsApp messages for gyms: payment and renewal receipts, a reminder before a membership ends and a message when it has ended. Sent straight from the gym's software, with the gym's own name and phone number in every message.",
+    features: [
+      "Payment receipt on WhatsApp, instantly",
+      "Reminder before a membership ends",
+      "Message when a membership has ended",
+      "Renewal and personal training receipts",
+      "The gym's own name and number in every message",
+    ],
+    problemPoints: [
+      {
+        title: "Memberships run out quietly",
+        body: "Nobody reminds the member, so they simply stop coming.",
+      },
+      {
+        title: "Reminders depend on memory",
+        body: "Calling every member by hand is slow and easy to skip on a busy day.",
+      },
+      {
+        title: "Receipts go missing",
+        body: "Members are never sure what they paid for, or until when.",
+      },
+      {
+        title: "Renewals come late",
+        body: "A reminder sent too late often means a renewal that never happens.",
+      },
+      {
+        title: "Members don't know who to call",
+        body: "Questions about a plan end up with the wrong person, or with nobody.",
+      },
+    ],
+    solutionPoints: [
+      {
+        title: "A receipt the moment they pay",
+        body: "Plan, valid dates and amount paid, on WhatsApp right after the payment is saved.",
+      },
+      {
+        title: "Reminded before the end date",
+        body: "A message goes out before the membership ends, so renewing is never a surprise.",
+      },
+      {
+        title: "Told when it has ended",
+        body: "A clear note once it ends, with how to get access back.",
+      },
+      {
+        title: "Nothing to remember",
+        body: "Every message is sent automatically from the gym's software.",
+      },
+      {
+        title: "The gym's own name and number",
+        body: "Members always know which gym wrote and exactly who to call.",
+      },
+    ],
+    audience: "Gyms, fitness studios, yoga and CrossFit centres, and personal trainers",
+    href: socials.whatsapp,
+    ctaLabel: "Talk to us on WhatsApp",
+    descriptor: "Automatic WhatsApp alerts for gyms",
+    searchTerms: [
+      "gym WhatsApp reminders",
+      "gym membership renewal reminder",
+      "gym payment receipt on WhatsApp",
+      "gym membership expiry alert",
+      "WhatsApp notifications for gyms",
+    ],
+    schemaCategory: "BusinessApplication",
+    schemaOs: "Web",
+    image: { src: "/gymnotify.webp", width: 1600, height: 1067 },
+    logo: { src: "/gymnotify-logo.webp", width: 902, height: 192 },
+    accent: "from-emerald-400/25 to-brand/10",
+  },
 ]
 
 /**
@@ -428,11 +511,11 @@ export const testimonials: Testimonial[] = []
 export const faqs = [
   {
     q: "What is Croxton Technologies?",
-    a: "Croxton Technologies is an independent software product company based in Hyderabad, Telangana, India. Rather than doing client projects, Croxton builds and runs its own products: Telix, an Android dialer and call tracker; ResumeLab, an AI resume builder; and Aperture AI, an AI photo search tool for events.",
+    a: "Croxton Technologies is an independent software product company based in Hyderabad, Telangana, India. Rather than doing client projects, Croxton builds and runs its own products: Telix, an Android dialer and call tracker; ResumeLab, an AI resume builder; GymNotify, automatic WhatsApp alerts for gyms; and Aperture AI, an AI photo search tool for events.",
   },
   {
     q: "What products does Croxton Technologies make?",
-    a: "Croxton Technologies currently makes three products. Telix is an Android dialer and call tracker with notes, tags, reminders and offline analytics. ResumeLab is a web app that builds ATS-friendly resumes with AI assistance and exports them as PDF or DOCX. Aperture AI is a web app that uses face recognition to find every photo you appear in from a large event gallery, and is launching soon.",
+    a: "Croxton Technologies currently makes four products. Telix is an Android dialer and call tracker with notes, tags, reminders and offline analytics. ResumeLab is a web app that builds ATS-friendly resumes with AI assistance and exports them as PDF or DOCX. GymNotify sends gym members automatic WhatsApp messages: payment receipts, a reminder before a membership ends and a message when it has ended. Aperture AI is a web app that uses face recognition to find every photo you appear in from a large event gallery, and is launching soon.",
   },
   {
     q: "What is Telix and who is it for?",

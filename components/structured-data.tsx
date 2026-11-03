@@ -103,15 +103,20 @@ export function productSchema(product: Product) {
     featureList: product.features,
     publisher: { "@id": organizationId },
     author: { "@id": organizationId },
-    offers: {
-      "@type": "Offer",
-      price: product.price,
-      priceCurrency: "INR",
-      availability:
-        product.status === "live"
-          ? "https://schema.org/InStock"
-          : "https://schema.org/PreOrder",
-    },
+  }
+
+  // A product sold on a quote has no price to publish, and its link is a
+  // contact link rather than somewhere to install from.
+  if (product.price === undefined) return schema
+
+  schema.offers = {
+    "@type": "Offer",
+    price: product.price,
+    priceCurrency: "INR",
+    availability:
+      product.status === "live"
+        ? "https://schema.org/InStock"
+        : "https://schema.org/PreOrder",
   }
 
   if (product.status === "live") {
